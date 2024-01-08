@@ -1,3 +1,14 @@
+window.onload = function () {
+  const playSound = () => {
+    let audio = new Audio("videoplayback.mp3");
+    audio.play();
+  };
+
+  playSound();
+};
+
+
+
 const gridDisplay = document.querySelector('#grid');
 const resultDisplay = document.querySelector('#result');
 const cardArray = [
@@ -77,6 +88,7 @@ const createBoard = () => {
 const checkMatch = () => {
   const cards = document.querySelectorAll('img');
   if (cardsChosen[0] === cardsChosen[1]) {
+    playSoundRing()
     alert('you found a match!');
     increment()
     cards[cardsChosenIds[0]].setAttribute('src', 'img/white.png');
@@ -100,7 +112,7 @@ const checkMatch = () => {
 
 const increment = () => {
   resultDisplay.innerHTML++
-  if (parseInt(resultDisplay.innerHTML) === 7) {
+  if (parseInt(resultDisplay.innerHTML) === 6) {
     prompt('Thank you for playing my game! Please leave feedback.');
   }
   
@@ -119,9 +131,9 @@ function flipCard () {
 
 createBoard()
 
-const playSound = () => {
-  let audio = new Audio("/videoplayback.mp3");
+const playSoundRing = () => {
+  let audio = new Audio("videoplaybackRing.mp3");
   audio.play();
 } 
 
-playSound()
+
